@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 骰遊戲 -->
+    <button id="good">start</button> <button>return</button>
+
+    <div class="result">結果: <div class="output"></div></div>
+
+    <script>
+        // document.querySelector('button').addEventListener('click',function(){
+        //     var dice1 =1;
+        //     var dice2 =2;
+        //     var dice3 =3;
+        //     var count = 0;
+        //     while(!(dice1==dice2 && dice2==dice3)){
+        //         count++;
+        //         dice1 = Math.floor(Math.random()*6)+1;
+        //         dice2 = Math.floor(Math.random()*6)+1;
+        //         dice3 = Math.floor(Math.random()*6)+1;
+        //         var starts = document.querySelector('.output');
+        //         starts.innerHTML = `第${count}次骰結果:${dice1},${dice2},${dice3}<br>${starts.innerHTML}`;
+
+        //     }
+        // })
+        document.querySelector('button').addEventListener('click',function(){
+        var dice1 =1;
+        var dice2 =2;
+        var dice3 =3;
+        var count = 0;
+        while(true){
+            count++;
+                dice1 = Math.floor(Math.random()*6)+1;
+                dice2 = Math.floor(Math.random()*6)+1;
+                dice3 = Math.floor(Math.random()*6)+1;
+                var starts = document.querySelector('.output');
+
+                // ${starts.innerHTML}為什麼可以用
+                starts.innerHTML = `第${count}次骰結果:${dice1},${dice2},${dice3}<br>${starts.innerHTML}`;
+            if(dice1==dice2 && dice2==dice3){
+                break;
+            }
+           
+        }
+    });
+    </script>
+</body>
+</html>

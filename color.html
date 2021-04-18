@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F06060;
+        }
+
+        .boxs {
+            width: 500px;
+            height: 500px;
+            background-color: #ddd;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .box {
+            width: 50%;
+            height: 50%;
+            border: 5px solid #ddd;
+            border-radius: 10px;
+            background-color: burlywood;
+        }
+
+        .box-opacity {
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="boxs"></div>
+
+    <script>
+        var lavel = 2;
+        var lavelWidth = 100 / lavel;
+        var count = 1;
+
+        const boxs = document.querySelector('.boxs');
+
+        function boxGame() {
+            let random = Math.floor(Math.random() * (lavel ** 2));
+            let Color = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+
+
+            boxs.innerHTML = "";
+            for (i = 0; i < lavel ** 2; i++) {
+                if (i == random) {
+                    boxs.innerHTML += `<div class="box box-opacity" style="width:${lavelWidth}%; height:${lavelWidth}%; 
+                    background-color:${Color}; 
+                    opacity:0.5${0.5 + lavel * 0.05}"></div>`
+                }
+                else {
+                    boxs.innerHTML += `<div class="box" style="width:${lavelWidth}%; height:${lavelWidth}%;
+                    background-color:${Color}"></div>`
+                }
+            }
+
+            document.querySelector('.box-opacity').addEventListener('click', () => {
+                count++;
+                console.log(count);
+                if (count == lavel) {
+                    lavel++;
+                    // var lavelWidth = 100/lavel;
+                    lavelWidth = 100 / lavel;
+                    console.log(lavelWidth);
+                    count = 0;
+                    console.log(count);
+                };
+                boxGame();
+            })
+        }
+        boxGame();
+
+    </script>
+
+
+
+</body>
+
+
+</html>

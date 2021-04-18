@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名<input type="text" id="name">
+    年紀<input type="text" id="age">
+    性別<input type="text" id="gender">
+
+    <br><br>
+    <button id="input">送出</button>
+    <button id="search">查詢</button>
+    <table>
+        <thead>
+            <tr>
+                <th>名字</th>
+                <th>年紀</th>
+                <th>性別</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+
+        var allData = [];
+
+        const inputButton = document.querySelector("#input");
+        const tbody = document.querySelector("tbody");
+
+        //資料放入
+        inputButton.addEventListener('click', () => {
+            let nameValue = document.querySelector("#name").value;
+            let ageValue = document.querySelector("#age").value;
+            let genderValue = document.querySelector("#gender").value;
+
+            allData.push({
+                "name": nameValue,
+                "age": ageValue,
+                "gender": genderValue,
+            });
+            dataUp();
+            buttonDelete();
+        })
+
+        //長畫面
+
+        function dataUp() {
+            tbody.innerHTML = "";
+            allData.forEach((data, index) => {
+                tbody.innerHTML +=
+                    `<tr>
+                    <th>${data["name"]}</th>
+                    <th>${data["age"]}</th>
+                    <th>${data["gender"]}</th>
+                    <th><button data-index="${index}">delete</button></th>
+                 </tr>`;
+            });
+        }
+        //刪除
+        function buttonDelete() {
+            tbody.addEventListener("click", ({ target }) => {
+                if (target.getAttribute("data-index") != undefined) {
+                    console.log(target.dataset.index);
+                    // 會全選 但data-index有改
+                    // var go= allData.splice(target.dataset.index, 1);
+                    // console.log(go);
+                    dataUp();
+                }
+            })
+
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <button id="button"></button>
+  <script>
+
+    // var a = 1;
+    // console.log(a);
+    // function abc() {
+    //   var a = 2;
+    //   console.log(a);
+
+    // }
+    // console.log(a);
+
+    // button.addEventListener('click', function () {
+    //   var a = 3;
+    //   console.log(a);
+    // })
+
+    var elements = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+// 這段函式會輸出[8, 6, 7, 9]這個陣列
+elements.map(function(element) {
+  console.log(element);
+  return element.length;
+  
+});
+
+// 上方這種一般的函式，可以被改寫成下方的箭頭函式
+elements.map((element) => {
+  return element.length;
+}); // [8, 6, 7, 9]
+
+// 如果輸入的參數只有一個，我們可以移除掉外面的括號
+elements.map(element => {
+  return element.length;
+}); // [8, 6, 7, 9]
+
+// 當箭頭函式裡的內容只有'return'的時候，我們可以拿掉return和外面的大括號
+elements.map(element => element.length); // [8, 6, 7, 9]
+
+// 在這個範例中，因為我們只需要length這個屬性，所以也可以使用解構賦值：
+// 下方的'length'對應到我們想取得的屬性，而'lengthFooBArX'只是很普通的變數名稱,
+// 可以被任意修改成你想要的名字
+elements.map(({ length: lengthFooBArX }) => lengthFooBArX); // [8, 6, 7, 9]
+
+// 上面這種解構賦值之後的參數也可以被改寫為下面這樣。但要注意的是，在這個範例中，
+// 我們不是要指定'length'這個值給一個虛構的屬性，而是這個變數的名稱'length'本身就是
+// 用來當成我們想從物件上取得的屬性
+elements.map(({ length }) => length); // [8, 6, 7, 9]
+
+
+// 問題 解構是解構物件 但element傳入的是每個'Hydrogen'這種字串 不向even知道
+
+  </script>
+</body>
+
+</html>

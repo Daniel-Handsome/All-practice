@@ -13,6 +13,7 @@
 
   <button id="button"></button>
   <script>
+    console.log(Date());
 
     // var a = 1;
     // console.log(a);
@@ -64,7 +65,6 @@ elements.map(({ length: lengthFooBArX }) => lengthFooBArX); // [8, 6, 7, 9]
 // 我們不是要指定'length'這個值給一個虛構的屬性，而是這個變數的名稱'length'本身就是
 // 用來當成我們想從物件上取得的屬性
 elements.map(({ length }) => length); // [8, 6, 7, 9]
-
 
 // 問題 解構是解構物件 但element傳入的是每個'Hydrogen'這種字串 不向even知道
 

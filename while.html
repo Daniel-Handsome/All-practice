@@ -10,7 +10,7 @@
     <!-- 骰遊戲 -->
     <button id="good">start</button> <button>return</button>
 
-    <div class="result">結果: <div class="output"></div></div>
+    <div class="result">結果: <div class="output" id="put"></div></div>
 
     <script>
         // document.querySelector('button').addEventListener('click',function(){
@@ -38,16 +38,22 @@
                 dice1 = Math.floor(Math.random()*6)+1;
                 dice2 = Math.floor(Math.random()*6)+1;
                 dice3 = Math.floor(Math.random()*6)+1;
-                var starts = document.querySelector('.output');
+                var starts = document.getElementById('put');
+                starts.classList.add("good");
+                console.log(starts);
+                // console.log(starts);
 
                 // ${starts.innerHTML}為什麼可以用
-                starts.innerHTML = `第${count}次骰結果:${dice1},${dice2},${dice3}<br>${starts.innerHTML}`;
+                // starts.innerHTML = `第${count}次骰結果:${dice1},${dice2},${dice3}<br>${starts.innerHTML}`;
             if(dice1==dice2 && dice2==dice3){
                 break;
             }
            
         }
     });
+
+
+        
     </script>
 </body>
 </html>

@@ -16,6 +16,7 @@
     <br><br>
     <button id="input">送出</button>
     <button id="search">查詢</button>
+    <button id="test">123</button>
     <table>
         <thead>
             <tr>
@@ -48,7 +49,6 @@
                 "gender": genderValue,
             });
             dataUp();
-            buttonDelete();
         })
 
         //長畫面
@@ -66,20 +66,18 @@
             });
         }
         //刪除
-        function buttonDelete() {
             tbody.addEventListener("click", ({ target }) => {
                 if (target.getAttribute("data-index") != undefined) {
                     console.log(target.dataset.index);
                     // 會全選 但data-index有改
-                    // var go= allData.splice(target.dataset.index, 1);
+                    var go= allData.splice(target.dataset.index, 1);
                     // console.log(go);
                     dataUp();
                 }
             })
+        
 
-        }
-
-
+     
     </script>
 
 

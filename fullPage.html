@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.css"
+        integrity="sha512-hGBKkjAVJUXoImyDezOKpzuY4LS1eTvJ4HTC/pbxn47x5zNzGA1vi3vFQhhOehWLTNHdn+2Yqh/IRNPw/8JF/A=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+
+    <div id="fullpage">
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"
+        integrity="sha512-HqbDsHIJoZ36Csd7NMupWFxC7e7aX2qm213sX+hirN+yEx/eUNlZrTWPs1dUQDEW4fMVkerv1PfMohR1WdFFJQ=="
+        crossorigin="anonymous"></script>
+
+
+    <script>
+
+        new fullpage('#fullpage', { 
+            //options here
+            autoScrolling: true,
+            scrollHorizontally: true,
+            navigation: true,
+            navigationTooltips: ['firstSlide', 'secondSlide', 'four', 'five'],
+            sectionsColor : ['#1235ab', '#aac241', '#77baac'],
+        });
+    </script>
+</body>
+
+</html>

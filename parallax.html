@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div id="scene">
+        <img data-depth="0.5"src="https://raw.githubusercontent.com/wagerfield/parallax/master/examples/assets/images/layer1.png" alt="">
+        <img data-depth="0.6"src="https://raw.githubusercontent.com/wagerfield/parallax/master/examples/assets/images/layer2.png" alt="">
+        <img data-depth="0.7"src="https://raw.githubusercontent.com/wagerfield/parallax/master/examples/assets/images/layer3.png" alt="">
+        <img data-depth="0.8"src="https://raw.githubusercontent.com/wagerfield/parallax/master/examples/assets/images/layer4.png" alt="">
+        <img data-depth="0.9"src="https://raw.githubusercontent.com/wagerfield/parallax/master/examples/assets/images/layer5.png" alt="">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+
+    <script>
+        var scene = document.getElementById('scene');
+        var parallaxInstance = new Parallax(scene);
+    </script>
+</body>
+
+</html>

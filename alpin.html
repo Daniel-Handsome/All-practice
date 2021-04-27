@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .btn {
+            width: 100px;
+            height: 50px;
+        }
+
+        .box {
+            
+            width: 200px;
+            height: 200px;
+            background-color: plum;
+        }
+
+    </style>
+</head>
+
+<body x-data="{ open:'btn1'}">
+
+    <div>目前的資料是:<span x-text="open">btn1</span></div>
+    <button class="btn" @click="open='btn1'">按鈕1</button>
+    <button class="btn" @click="open='btn2'">按鈕2</button>
+    <button class="btn" @click="open='btn3'">按鈕3</button>
+
+    <div class="box" x-show="open == 'btn1'">區塊一</div>
+    <div class="box" x-show="open == 'btn2'">區塊二</div>
+    <div class="box" x-show="open == 'btn3'">區塊三</div>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+</body>
+
+</html>

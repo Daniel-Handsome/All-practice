@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            width: 100px;
+            height: 50px;
+        }
+        .box{
+            display: none;
+            width: 200px;
+            height: 200px;
+            background-color: plum;
+        }
+        .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <button class="btn" data-id="#box1">按鈕1</button>
+    <button class="btn" data-id="#box2">按鈕2</button>
+    <button class="btn" data-id="#box3">按鈕3</button>
+
+    <div id="box1" class="box active">區塊一</div>
+    <div id="box2" class="box">區塊二</div>
+    <div id="box3" class="box">區塊三</div>
+
+    <script>
+        document.querySelectorAll('.btn').forEach(function (btn) {
+            btn.addEventListener('click',function () {
+                var id = this.getAttribute('data-id');
+                var box = document.querySelector(id);
+
+                // 移除全部的active
+                document.querySelectorAll('.box').forEach(function (box) {
+                   box.classList.remove('active') ;
+                });
+
+                // 新增目標的active
+                box.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

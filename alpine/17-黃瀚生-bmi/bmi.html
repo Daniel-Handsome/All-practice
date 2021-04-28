@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div {
+            display: flex;
+            text-align: center;
+        }
+
+        .answer {
+            width: 70px;
+            height: 40px;
+            border: 1px solid red;
+            line-height: 40px;
+        }
+    </style>
+
+</head>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<body x-data="setData()">
+    <div class="div" >
+        <input type="number" id="bodyHeight" x-model="height">身高 cm +
+        <input type="number" id="bodyWeight" x-model="width">體重 kg =
+
+        <div class="answer" x-text="bmi()">
+
+        </div>
+        <button id="start">
+            開始計算
+        </button>
+
+        <button id="clean" type="">
+            清除重算
+        </button>
+    </div>
+
+    <script>
+        function setData() {
+            return {
+                height : 0,
+                width : 0,
+                bmi() {
+                    let anser = this.width / ((this.height / 100) ** 2);
+                    return anser ? anser : 0;
+                },
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .btn {
+            width: 100px;
+            height: 50px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: plum;
+        }
+    </style>
+
+</head>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+<body x-data="setData()">
+
+    <img :src="img" width="30%" alt="" @click="change()"><br>
+
+
+    <!-- <template x-for=" (btn,index) in btns" :key="index">
+        <button class="btn" @click="btn[index]"  x-text="index">按鈕1</button>
+    </template> -->
+
+    <template x-for=" (btn,index) in btns" :key="btn">
+        <button class="btn" @click="div = btn['btn']" x-text='index'></button>
+    </template>
+
+    <template x-for=" div in showDiv" :key="div">
+         <div class="box" x-show="div == div['one']">區塊一</div>
+    </template> 
+    <!-- <div class="box" x-show="div == 'divOne'">區塊一</div>
+    <div class="box" x-show="div == 'divTwo'">區塊2</div>
+    <div class="box" x-show="div == 'divThree'">區塊3</div> -->
+
+    <script>
+        function setData() {
+            return {
+                div:'divOne',
+                img: './down.png',
+
+                showDiv: [{one:'divOne'}, {one:'divTwo'}, {one:'divThree'}],
+                btns: [
+                    {
+                        btn:'divOne'
+                    },
+                    {
+                        btn:'divTwo'
+                    },
+                    {
+                        btn:'divThree'
+                    }
+                ],
+                change() {
+                    if (this.img == './down.png') {
+                        this.img = '/downOne.png';
+                    } else {
+                        this.img = './down.png';
+                    }
+                }
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

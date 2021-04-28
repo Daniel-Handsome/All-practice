@@ -14,7 +14,6 @@
         }
 
         .box {
-            
             width: 200px;
             height: 200px;
             background-color: plum;
@@ -23,7 +22,7 @@
     </style>
 </head>
 
-<body x-data="{ open:'btn1'}">
+<body x-data="setData()">
 
     <div>目前的資料是:<span x-text="open">btn1</span></div>
     <button class="btn" @click="open='btn1'">按鈕1</button>
@@ -34,7 +33,21 @@
     <div class="box" x-show="open == 'btn2'">區塊二</div>
     <div class="box" x-show="open == 'btn3'">區塊三</div>
 
+
+    
+
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+
+    <script>
+        function setData(){
+            return {
+                open:'btn1'
+            }
+            
+        }
+    </script>
+
 </body>
 
 </html>

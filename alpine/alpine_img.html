@@ -33,15 +33,15 @@
     </template> -->
 
     <template x-for=" (btn,index) in btns" :key="btn">
-        <button class="btn" @click="div = btn['btn']" x-text='index'></button>
+        <button class="btn" @click="div = btn['btn']" x-text='"hello" + index'></button>
     </template>
 
-    <template x-for=" div in showDiv" :key="div">
-         <div class="box" x-show="div == div['one']">區塊一</div>
+    <template x-for="(d, i) in showDiv" :key="div">
+         <div class="box" x-show="div == d.one" x-text="'test' + i"></div>
     </template> 
     <!-- <div class="box" x-show="div == 'divOne'">區塊一</div>
     <div class="box" x-show="div == 'divTwo'">區塊2</div>
-    <div class="box" x-show="div == 'divThree'">區塊3</div> -->
+    <div class="box" x-show="div == 'divThree'">區塊3</div> -->     
 
     <script>
         function setData() {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="products"></div>
+  <div id="total_price"></div>
+  <script>
+    
+
+    function render() {
+      products.innerHTML = "";
+      productArray.forEach(p => {
+        products.innerHTML += `
+            <div data-name="${p.name}">
+                <span>商品名稱: ${p.name}</span>
+                <span>商品價格: ${p.price}</span>
+                <button data-action="plus">+</button>
+                <input type="text" value="${p.quantity}" />
+                <button data-action="minus">-</button>
+            </div>
+        `;
+      });
+      
+      total_price.textContent = productArray
+        .map(p => p.price * p.quantity)
+        .reduce((a, c) => a + c, 0);
+    }
+    render();
+
+    let total = 0;
+
+    products.addEventListener("click", function (e) { 
+      
+      const { name: productName } = e.target.parentNode.dataset;
+     
+      const { action } = e.target.dataset;
+      console.log(e.target.dataset);
+
+      const productObj = productArray.find(o => o.name === productName);
+      if (action === "plus") {
+        productObj.quantity++;
+      } else if (action === "minus") {
+        if (productObj.quantity > 0) {
+          productObj.quantity--;
+        }
+      }
+      render();
+    });
+  </script>
+</body>
+
+</html>

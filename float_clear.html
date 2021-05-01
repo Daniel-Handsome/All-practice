@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            border: 1px solid #000;
+            background-color: aquamarine;
+        }
+
+        .div1 {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(128, 128, 124);
+        float: left;
+        }
+        .div2 {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(175, 175, 35);
+            float: left;
+        }
+        .div3 {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(26, 31, 26);
+            float: left;
+        }
+        .out::after{
+            clear: both;
+            content: "";
+            display: block;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="out">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+    </div>
+</body>
+
+</html>

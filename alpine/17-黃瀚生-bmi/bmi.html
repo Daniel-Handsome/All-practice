@@ -8,15 +8,47 @@
     <title>Document</title>
     <style>
         .div {
+            height: 500px;
             display: flex;
-            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        table {
+            border-collapse: separate;
+            border: 4px dashed #000;
+            width: 446px;
+            height: 20px;
+            margin: auto;
+        }
+
+        th {
+            border-collapse: collapse;
+            border: 2px dashed #000;
+        }
+
+        td {
+            border-collapse: collapse;
+            border: 2px dashed #000;
         }
 
         .answer {
-            width: 70px;
-            height: 40px;
+            width: 30px;
+            height: 20px;
             border: 1px solid red;
             line-height: 40px;
+        }
+
+        .answer {
+            width: 100px;
+            height: 40px;
+
+        }
+
+        .yellow {
+            background-color: yellow;
         }
     </style>
 
@@ -24,33 +56,125 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <body x-data="setData()">
-    <div class="div" >
-        <input type="number" id="bodyHeight" x-model="height">身高 cm +
-        <input type="number" id="bodyWeight" x-model="width">體重 kg =
 
-        <div class="answer" x-text="bmi()">
+    <div class="div">
+
+        男生<input type="radio" name="gender" value="1" x-model="gender">
+        女生<input type="radio" name="gender" value="0" x-model="gender">
+
+
+        <input type="number" id="bodyHeight" x-model="height">身高 cm +
+        <input type="number" id="bodyWeight" x-model="width">體重 kg
+
+
+        <span>=</span>
+        <div x-ref="show" class="answer">
 
         </div>
-        <button id="start">
+        <button id="start" @click="$refs.show.innerText = bmi()">
             開始計算
         </button>
 
-        <button id="clean" type="">
+        <button id="clean" @click="clean(),$refs.show.innerText = ''">
             清除重算
         </button>
     </div>
+    <table>
+
+
+        <thead>
+            <tr>
+                <th colspan=4>BMI值</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td colspan="2"></td>
+                <td>
+                    男性
+                </td>
+                <td>女性</td>
+            </tr>
+
+            <template x-for="(data,index) in tableData()">
+                <tr>
+                    <td colspan="2" x-text="data['type']" :class="{'yellow':light==(index+1)}"></td>
+                    <td x-text="data['male']"></td>
+                    <td x-text="data['female']"></td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
 
     <script>
         function setData() {
             return {
-                height : 0,
-                width : 0,
+                height: 0,
+                width: 0,
+                gender: 0,
+                light: -1,
                 bmi() {
                     let anser = this.width / ((this.height / 100) ** 2);
-                    return anser ? anser : 0;
+                    switch (true) {
+                        case (anser < 19 && this.gender == 0) || (anser < 20 && this.height == 1):
+                            this.light = 0;
+                            return "過輕";
+                        case anser < 25:
+                            this.light = 1;
+                            return "正常";
+                        case anser < 30:
+                            this.light = 2;
+                            return "過重";
+                        case anser < 35:
+                            this.light = 3;
+                            return "輕度肥胖";
+                        case anser < 40:
+                            this.light = 4;
+                            return "中度肥胖";
+                        case anser > 40:
+                            this.light = 5;
+                            return "重度肥胖";
+                        default:
+                            return anser ? "亂打" : 0;
+                    }
                 },
+                clean() {
+                    this.width = "";
+                    this.height = "";
+                },
+                tableData() {
+                    return [
+                        {
+                            type: "體重過輕",
+                            male: "<20",
+                            female: "<19",
+                        },
+                        {
+                            type: "正常範圍",
+                            male: "20-25",
+                            female: "19-25",
+                        },
+                        {
+                            type: "體重過重",
+                            male: "25-30",
+                            female: "25-30",
+                        },
+                        {
+                            type: "肥胖",
+                            male: "30-40",
+                            female: "30-40",
+                        },
+                        {
+                            type: "體重過輕",
+                            male: ">40",
+                            female: ">40",
+                        }
+                    ]
+                }
             }
         }
+
 
     </script>
 </body>

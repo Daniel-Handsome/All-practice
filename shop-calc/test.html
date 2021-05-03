@@ -11,19 +11,56 @@
     <div id="total_price"></div>
 
     <script>
-      //1 const
-      const productArray = [
-        { name: "Potato", price: 7, quantity: 0 },
-        { name: "Teddy", price: 8, quantity: 0 },
-        { name: "Shiromo", price: 9, quantity: 0 },
-      ];
+      ;(function () {
+        let products = document.querySelector("#products");
+        let total_price = document.querySelector("#total_price");
+        const productArray = [
+          { name: "Potato", price: 7, quantity: 0 },
+          { name: "Teddy", price: 8, quantity: 0 },
+          { name: "Shiromo", price: 9, quantity: 0 },
+        ];
 
-      function creat() {
-        products = "";
-        productArray.forEach(function (product) {
-          product.innerhtml;
-        });
-      }
+        //生畫面
+        creat();
+
+        //點 增加錢
+        products.addEventListener("click", proudctCalc);
+
+        function creat() {
+          products.innerHTML = "";
+          productArray.forEach((p) => {
+            products.innerHTML += ` <div data-name="${p.name}">
+                <span>商品名稱: ${p.name}</span>
+                <span>商品價格: ${p.price}</span>
+                <button data-active="minus">-</button>
+                <input type="text" value="${p.quantity}" />
+                <button data-active="plus">+</button>
+            </div>`;
+          });
+        }
+
+        //點 計算
+        function proudctCalc(e) {
+          //當你點 會去找他是誰的資料
+          const { name: productName } = e.target.parentNode.dataset;
+
+          const productObj = productArray.find(
+            (product) => product.name === productName
+          );
+
+          const { active } = e.target.dataset;
+
+          if (active === "plus") {
+            console.log(productObj.quantity);
+            productObj.quantity++;
+          } else if (active === "minus") {
+            if (productObj.quantity > 0) {
+              productObj.quantity--;
+            }
+          }
+          creat();
+        }
+      })();
     </script>
   </body>
 </html>

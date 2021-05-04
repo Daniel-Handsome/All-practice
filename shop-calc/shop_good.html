@@ -33,7 +33,7 @@
 
         total_price.textContent = productArray
           .map((p) => p.price * p.quantity)
-          .reduce((a, c) => a + c, 0);
+          .reduce((a, c) => a + c , 0);
       }
       render();
 

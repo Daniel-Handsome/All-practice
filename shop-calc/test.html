@@ -1,78 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="products"></div>
-    <div id="total_price"></div>
 
-    <script>
-      ;(function () {
-        let products = document.querySelector("#products");
-        let total_price = document.querySelector("#total_price");
-        const productArray = [
-          { name: "Potato", price: 7, quantity: 0 },
-          { name: "Teddy", price: 8, quantity: 0 },
-          { name: "Shiromo", price: 9, quantity: 0 },
-        ];
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-        //生畫面
-        creat();
+<body>
+  <div id="products"></div>
+  <div id="total_price"></div>
 
-        //點 增加錢
-        products.addEventListener("click", proudctCalc);
+  <script>
+    ;
+    (function () {
+      let products = document.querySelector("#products");
+      let total_price = document.querySelector("#total_price");
+      const productArray = [{
+          name: "Potato",
+          price: 7,
+          quantity: 0
+        },
+        {
+          name: "Teddy",
+          price: 8,
+          quantity: 0
+        },
+        {
+          name: "Shiromo",
+          price: 9,
+          quantity: 0
+        },
+      ];
 
-        function creat() {
-          products.innerHTML = "";
-          productArray.forEach((p) => {
-            products.innerHTML += ` <div data-name="${p.name}">
+      //生畫面
+      creat();
+
+      //點 增加錢
+      products.addEventListener("click", proudctCalc);
+
+      function creat() {
+        products.innerHTML = "";
+        productArray.forEach((p) => {
+          products.innerHTML += ` <div data-name="${p.name}">
                 <span>商品名稱: ${p.name}</span>
                 <span>商品價格: ${p.price}</span>
                 <button data-active="minus">-</button>
                 <input type="text" value="${p.quantity}" />
                 <button data-active="plus">+</button>
             </div>`;
-          });
+        });
 
 
-        }
 
-        //點 計算
-        function proudctCalc(e) {
-          //當你點 會去找他是誰的資料
-          const { name: productName } = e.target.parentNode.dataset;
+      }
 
-          const productObj = productArray.find(
-            (product) => product.name === productName
-          );
+      //點 計算
+      function proudctCalc(e) {
+        //當你點 會去找他是誰的資料
+        const {
+          name: productName
+        } = e.target.parentNode.dataset;
 
-          const { active } = e.target.dataset;
+        const productObj = productArray.find(
+          (product) => product.name === productName
+        );
 
-          if (active === "plus") {
-            console.log(productObj.quantity);
-            productObj.quantity++;
-          } else if (active === "minus") {
-            if (productObj.quantity > 0) {
-              productObj.quantity--;
-            }
+        const {
+          active
+        } = e.target.dataset;
+
+        if (active === "plus") {
+          
+          productObj.quantity++;
+        } else if (active === "minus") {
+          if (productObj.quantity > 0) {
+            productObj.quantity--;
           }
-          total_price.textContent = productObj
-            .map(p => (p.price)*(p.quantity))
-            .reduce
-
-
-          creat();
         }
+        total_price.textContent = productArray
+        let b= productArray; 
+        let a = productArray.map(p => (p.price) * (p.quantity));
+          console.log(a,b);
+
+        creat();
+      }
 
 
 
 
 
-      })();
-    </script>
-  </body>
+    })();
+  </script>
+</body>
+
 </html>

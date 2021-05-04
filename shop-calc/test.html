@@ -37,6 +37,8 @@
                 <button data-active="plus">+</button>
             </div>`;
           });
+
+
         }
 
         //點 計算
@@ -58,8 +60,18 @@
               productObj.quantity--;
             }
           }
+          total_price.textContent = productObj
+            .map(p => (p.price)*(p.quantity))
+            .reduce
+
+
           creat();
         }
+
+
+
+
+
       })();
     </script>
   </body>

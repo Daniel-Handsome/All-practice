@@ -55,7 +55,7 @@
         var lavel = 2;
         var lavelWidth = 100 / lavel;
         var count = 1;
-
+        // console.log(lavelWidth);
         const boxs = document.querySelector('.boxs');
 
         function boxGame() {
@@ -78,14 +78,14 @@
 
             document.querySelector('.box-opacity').addEventListener('click', () => {
                 count++;
-                console.log(count);
+                // console.log(count);
                 if (count == lavel) {
                     lavel++;
                     // var lavelWidth = 100/lavel;
-                    var lavelWidth = 100 / lavel;
+                    lavelWidth = 100 / lavel;
                     console.log(lavelWidth);
                     count = 0;
-                    console.log(count);
+                    // console.log(count);
                 };
                 boxGame();
             })
